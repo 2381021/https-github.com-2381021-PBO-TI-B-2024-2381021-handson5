@@ -61,18 +61,8 @@ public class Main {
     }
 
     public static boolean removeTodoList(Integer number){
-        //check if the number is 0 or less than zero
-        if (number <= 0){
+        if (isSelectedToDoNotValid(number)){
             return true;
-
-        }
-        //check if the number is greater than the todos length
-        if (number - 1 > todos.length - 1){
-            return false;
-        }
-        //check whether the element is already null
-        if (todos[number - 1] == null){
-            return false;
         }
 
         for (int i = number - 1; i < todos.length; i++){
@@ -91,5 +81,21 @@ public static boolean editTodoList(Integer number, String newTodo){
         }
         todos[number-1] = newTodo;
         return true;
+    }
+
+    private static boolean isSelectedToDoNotValid(Integer number) {
+        //check if the number is 0 or less than zero
+        if (number <= 0){
+            return true;
+        }
+        //check if the number is greater than the todos length
+        if (number - 1 > todos.length - 1){
+            return true;
+        }
+        //check whether the element is already null
+        if (todos[number - 1] == null){
+            return true;
+        }
+    return false;
     }
 }
